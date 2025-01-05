@@ -22,22 +22,18 @@ const agent = new https.Agent({
 
 app.get('/api/dolar', async (req, res) => {
   try {
-    console.log('Iniciando solicitud a https://www.bcv.org.ve/');
 
     const response = await axios.get('https://www.bcv.org.ve/', { httpsAgent: agent });
-    console.log('Solicitud completada. Estado:', response.status);
 
     const $ = cheerio.load(response.data);
     const dolarElement = $('#dolar .col-sm-6.col-xs-6.centrado strong');
-    console.log('Elemento encontrado con el selector:', dolarElement.html());
 
     const dolarValueRaw = dolarElement.text().trim();
-    console.log('Valor bruto extraído del HTML:', dolarValueRaw);
 
     if (dolarValueRaw) {
       const dolarValueProcessed = dolarValueRaw.replace(/\./g, '').replace(',', '.');
       const dolarValue = parseFloat(dolarValueProcessed);
-      console.log('Valor final como número:', dolarValue);
+
 
       return res.json({ success: true, dolar: dolarValue });
     } else {
@@ -52,5 +48,5 @@ app.get('/api/dolar', async (req, res) => {
 
 
 https.createServer(options, app).listen(PORT, () => {
-  console.log(`Servidor HTTPS ejecutándose en https://facturacion.amaxoniaerp.com:${PORT}`);
+
 });
