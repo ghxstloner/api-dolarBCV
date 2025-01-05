@@ -16,7 +16,6 @@ const options = {
   ca: fs.readFileSync('/etc/letsencrypt/live/facturacion.amaxoniaerp.com/chain.pem'),
 };
 
-const https = require('https');
 const agent = new https.Agent({
   rejectUnauthorized: false,
 });
