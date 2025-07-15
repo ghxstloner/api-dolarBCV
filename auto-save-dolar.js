@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-
+const cron = require('node-cron');
 const mysql = require("mysql2/promise");
 require('dotenv').config();
 
@@ -79,13 +79,23 @@ async function autoSaveDolar(url) {
       for (const config of dbConfigs) {
         await executeQuery(config, dolar);
       }
+      
+      console.log('************************************************************************')
+      console.log('ejecucion finalizada... pronto se ejecutara la siguiente actualizacion')
+      console.log('************************************************************************')
+      console.log('\n')
     }
   } catch (error) {
     console.log(error);
   }
 }
 
+cron.schedule('0 0 * * *', () => {
+
 autoSaveDolar(process.env.URL_TASA);
+}, {
+  timezone: 'America/Caracas',
+});
 
 /* 
 VARIABLES PARA EL ARCHIVO .ENV
