@@ -11,9 +11,13 @@ const PORT = 3009;
 app.use(cors());
 
 const options = {
+  //key: fs.readFileSync('/etc/letsencrypt/live/facturacion.amaxoniaerp.com/privkey.pem'),
+  //cert: fs.readFileSync('/etc/letsencrypt/live/facturacion.amaxoniaerp.com/cert.pem'),
+  //ca: fs.readFileSync('/etc/letsencrypt/live/facturacion.amaxoniaerp.com/chain.pem'),
+
   key: fs.readFileSync('/etc/letsencrypt/live/facturacion.amaxoniaerp.com/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/facturacion.amaxoniaerp.com/cert.pem'),
-  ca: fs.readFileSync('/etc/letsencrypt/live/facturacion.amaxoniaerp.com/chain.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/facturacion.amaxoniaerp.com/fullchain.pem'),
+
 };
 
 const agent = new https.Agent({
