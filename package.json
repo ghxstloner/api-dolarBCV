@@ -1,4 +1,11 @@
 {
+  "name": "api-dolar-bcv",
+  "version": "1.0.0",
+  "description": "API BCV + Cron Job de guardado automatico",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "axios": "^1.7.9",
     "cheerio": "^1.0.0",
@@ -6,7 +13,6 @@
     "dotenv": "^17.2.0",
     "express": "^4.21.2",
     "mysql2": "^3.14.2",
-    "node-cron": "^4.2.1",
-    "node-fetch": "^2.7.0"
+    "node-cron": "^4.2.1"
   }
 }
